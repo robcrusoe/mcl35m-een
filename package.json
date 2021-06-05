@@ -1,11 +1,11 @@
 {
   "name": "mcl35m-een",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha"
+    "test": "mocha './app/**/*.spec.js'"
   },
   "keywords": [],
   "author": "",
