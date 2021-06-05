@@ -1,0 +1,8 @@
+# Node Modules
+node_modules
+
+# System Files
+.DS_Store
+
+# Application Files
+package-lock.json
