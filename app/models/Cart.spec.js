@@ -77,5 +77,33 @@ describe('Cart', () => {
 
             expect(cart.getTotalCost()).to.eq(15);
         });
+
+        describe('getTotalCost variations', () => {
+            let partCost5 = { cost: 5 };
+            let partCost10 = { cost: 10 };
+
+            let emptyLineItems = [];
+            let singleItemLineItems = [
+                { part: partCost5, quantity: 1 }
+            ];
+            let multipleItemsLineItems = [
+                { part: partCost5, quantity: 1 },
+                { part: partCost10, quantity: 1 }
+            ];
+
+            let testVariations = [
+                { lineItems: emptyLineItems, expected: 0 },
+                { lineItems: singleItemLineItems, expected: 5 },
+                { lineItems: multipleItemsLineItems, expected: 15 }
+            ];
+
+            testVariations.forEach(test => {
+                it(`correctly calculates the total cost with ${test.lineItems.length} items`, () => {
+                    cart.lineItems = test.lineItems;
+
+                    expect(cart.getTotalCost()).to.eq(test.expected);
+                });
+            });
+        });
     });
 });
