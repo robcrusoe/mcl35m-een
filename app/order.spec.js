@@ -1,7 +1,7 @@
 const order = require('./order');
 const expect = require('chai').expect;
 
-describe('order', () => {
+describe('Order', () => {
     it('should deal with promises', () => {
         let cart = {};
         
