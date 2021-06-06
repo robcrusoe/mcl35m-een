@@ -2,6 +2,22 @@ const expect = require('chai').expect;
 const utilities = require('./utilities');
 
 describe('Utilities', () => {
+    before(() => {
+        // Executes once before all tests
+    });
+
+    beforeEach(() => {
+        // Executes once before every test
+    });
+
+    afterEach(() => {
+        // Executes once after every test
+    });
+
+    after(() => {
+        // Executes once after all tests
+    });
+
     describe('getArgument', () => {
         it('should return the second word when asked for the first parameter', () => {
             let firstArg = utilities.getArgument('command argument', 1);
