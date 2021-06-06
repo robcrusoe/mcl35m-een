@@ -50,4 +50,32 @@ describe('Cart', () => {
             expect(cart.lineItems[0].quantity).to.eq(4);
         });
     });
+
+    describe('getTotalCost', () => {
+        let cart;
+        beforeEach(() => {
+            cart = new Cart();
+        });
+
+        it('should be zero with no items', () => {
+            expect(cart.getTotalCost()).to.eq(0);
+        });
+
+        it('should be five with one item with a quantity of one and cost of five', () => {
+            let myPart1 = { cost: 5 };
+            cart.addItem(myPart1, 1);
+
+            expect(cart.getTotalCost()).to.eq(5);
+        });
+
+        it('should be fifteen with one item of quantity one with cost of five and one more item with quantity one with cost of ten', () => {
+            let myPart1 = { cost: 5 };
+            let myPart2 = { cost: 10 };
+
+            cart.addItem(myPart1, 1);
+            cart.addItem(myPart2, 1);
+
+            expect(cart.getTotalCost()).to.eq(15);
+        });
+    });
 });
