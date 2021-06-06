@@ -11,8 +11,9 @@ describe('Cart', () => {
     describe('addItem', () => {
         it('should have only one item with a quantity of one after addItem is called on a fresh cart with a quantity of 1', () => {
             cart.addItem(myPart, 1);
-            expect(cart.lineItems.length).to.eq(1);
-            expect(cart.lineItems[0].quantity).to.eq(1);
+
+            /* Deep comparison ... */
+            expect(cart.lineItems).to.eql([{ part: {}, quantity: 1 }]);
         });
 
         it('should have only one item with a quantity of two after addItem is called twice on a fresh cart with a quantity of 1', () => {
@@ -104,6 +105,24 @@ describe('Cart', () => {
                     expect(cart.getTotalCost()).to.eq(test.expected);
                 });
             });
+        });
+    });
+
+    describe('empty', () => {
+        let cart;
+        beforeEach(() => {
+            cart = new Cart();
+        });
+
+        it('should have an empty array', () => {
+            cart.lineItems = [{}, {}];
+            cart.empty();
+
+            /* `Identity comparison` doesn't work good for us here ... */
+            // expect(cart.lineItems).to.eq([]);
+
+            /* We have to go with the option of `Deep comparison` here ... */
+            expect(cart.lineItems).to.eql([]);
         });
     });
 });
