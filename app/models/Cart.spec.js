@@ -124,5 +124,13 @@ describe('Cart', () => {
             /* We have to go with the option of `Deep comparison` here ... */
             expect(cart.lineItems).to.eql([]);
         });
+
+        it('should have a different object when emptied than the original array', () => {
+            let originalLineItems = cart.lineItems;
+
+            /* Testing Identity (even though the shapes are same - both empty arrays) */
+            cart.empty();
+            expect(cart.lineItems).to.not.eq(originalLineItems);
+        });
     });
 });
